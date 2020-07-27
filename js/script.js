@@ -17,7 +17,7 @@ for(var i=1; i<=5; i++){
 alert(arrayMacchina);
 
 // 4. contdown 30 secondi, utente //-> inserire cinque prompt 
-var contDown=setTimeout(alertUtente,1000);
+var countDown=setTimeout(alertUtente,30000);
 console.log(arrayMacchina);
 function alertUtente(){
     for(var i=0; i<=arrayMacchina.length-1; i++){
@@ -26,12 +26,8 @@ function alertUtente(){
             arrayUtente.push(utente);
         }
     }
-    
     console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length); // 6. vedere numeri simili e quali sono stati trovati
-    
 }
-
-
 
 
 // 1.funzione numeri casuali
