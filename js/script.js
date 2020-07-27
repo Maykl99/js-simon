@@ -22,7 +22,7 @@ alert(arrayMacchina);
 
 // 3. contdown 30 secondi
 var contDown=setTimeout(alertUtente,1000);
-
+console.log(arrayMacchina);
 function alertUtente(){
     for(var i=0; i<=arrayMacchina.length-1; i++){
         var utente=parseInt(prompt('Inserisci dei numeri casuali'));
@@ -30,7 +30,7 @@ function alertUtente(){
             arrayUtente.push(utente);
         }
     }
-    console.log(arrayMacchina);
+    
     console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length);
     
 }
