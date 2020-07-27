@@ -1,14 +1,8 @@
-/* 
-Un alert espone 5 numeri casuali.
-Dopo la chiusura (manuale, cioè facendo click su ok) dell'alert, parte un timer di 30 secondi.
-Dopo i 30 secondi l'utente deve inserire un prompt alla volta i numeri che ha visto precedentemente. 
-Dopo che sono stati inseriti i 5 numeri, il software dice quanti e
-quali dei numeri da indovinare sono stati individuati.*/
-
-
 // 2. array vuoti //-> da popolare 
 arrayMacchina=[];
 arrayUtente=[];
+listaPosizioneUtente=[];
+var posizioneIndice;
 
 // 3. alert con i cinque numeri casuali
 for(var i=1; i<=5; i++){
@@ -25,9 +19,15 @@ function alertUtente(){
         if(utente === arrayMacchina[i]){ // 5. confronto fra i due array 
             arrayUtente.push(utente);
         }
+        posizioneIndice = arrayUtente.indexOf(utente);
+        while(posizioneIndice != -1){
+            listaPosizioneUtente.push(posizioneIndice);
+            posizioneIndice = arrayUtente.indexOf(utente, posizioneIndice + 1);
+        }
+        
     }
-    
-    console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length); // 6. vedere numeri simili e quali sono stati trovati
+    console.log(listaPosizioneUtente); 
+    console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length) //+ ' alla posizione ' + posizioneIndice); // 6. vedere numeri simili e quali sono stati trovati
 }
 
 
@@ -38,5 +38,10 @@ function numeroRandom(min,max){
 }
 
 /* beh quello che hai fatto adesso ti dice già se hai azzeccato numero e posizione
-quello che ti manca è un’altro rametto di codice ( e un nuovo array dove salvarlo ) che ti dica ok non è nella giusta posizione, ma è cmq contenuto nell’array */
+quello che ti manca è un’altro rametto di codice ( e un nuovo array dove salvarlo ) che ti dica ok non è nella giusta posizione, ma è cmq contenuto nell’array */ 
+/* 
+for(var i=0; i<array.length; i++){
+    console.log(array.indexOf(i));
+}
 
+console.log(array.indexOf(56))*/
