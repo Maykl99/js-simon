@@ -9,34 +9,51 @@ quali dei numeri da indovinare sono stati individuati.*/
 // 2. array vuoti //-> da popolare 
 arrayMacchina=[];
 arrayUtente=[];
+max=100;
+min=10;
 
 // 3. alert con i cinque numeri casuali
 for(var i=1; i<=5; i++){
-    arrayMacchina.push(numeroRandom(10,100));
+    var numero= numeroRandom(min,max);
+    if(!ricerca(arrayMacchina,numero)){
+        arrayMacchina.push(numero);
+    }
 }
 alert(arrayMacchina);
 
 // 4. contdown 30 secondi, utente //-> inserire cinque prompt 
 var countDown=setTimeout(alertUtente,1000);
 console.log(arrayMacchina);
+
 function alertUtente(){
     for(var i=0; i<=arrayMacchina.length-1; i++){
-        var utente=parseInt(prompt('Inserisci dei numeri casuali'));
-        if(utente === arrayMacchina[i]){ // 5. confronto fra i due array 
-            arrayUtente.push(utente);
+        var utente=parseInt(prompt('Inserisci dei numeri casuali da ' + min + ' a ' + max));
+        while(utente <= 0 || utente > 100){
+            var utente=parseInt(prompt('Attenzione! inserire numeri nell\' intervallo corretto'));
         }
-    }
-    
-    console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length); // 6. vedere numeri simili e quali sono stati trovati
-}
+        if(!ricerca(arrayUtente,utente)){ // controllo duplicati
 
+            if(utente === arrayMacchina[i]){ // 5. confronto fra i due array 
+                arrayUtente.push(utente);
+            }
+        }
+
+    }
+   
+    console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length) + ' alla posizione ' + arrayUtente.indexOf(utente); // 6. vedere numeri simili e quali sono stati trovati
+}
 
 // 1.funzione numeri casuali
 function numeroRandom(min,max){
     numero= Math.floor(Math.random() * (max - min) + min);
     return numero;
 }
-
-/* beh quello che hai fatto adesso ti dice già se hai azzeccato numero e posizione
-quello che ti manca è un’altro rametto di codice ( e un nuovo array dove salvarlo ) che ti dica ok non è nella giusta posizione, ma è cmq contenuto nell’array */
-
+//1.5 funzione controlllo duplicati // oppure utilizzo .includes()
+function ricerca(array,elemento){
+    for(var i=0; i<array.length; i++){
+        if(elemento == array[i]){
+            return true;
+        }
+    }
+    return false;
+}
