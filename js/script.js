@@ -31,16 +31,18 @@ function alertUtente(){
         while(utente <= 0 || utente > 100){
             var utente=parseInt(prompt('Attenzione! inserire numeri nell\' intervallo corretto'));
         }
-        if(!ricerca(arrayUtente,utente)){ // controllo duplicati
 
-            if(utente === arrayMacchina[i]){ // 5. confronto fra i due array 
+        if(ricerca(arrayMacchina,utente) && !ricerca(arrayUtente,utente)){ // controllo duplicati
+
+            //if(utente === arrayMacchina[i]){ // 5. confronto fra i due array 
                 arrayUtente.push(utente);
-            }
+           // }
         }
 
     }
-   
-    console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length) + ' alla posizione ' + arrayUtente.indexOf(utente); // 6. vedere numeri simili e quali sono stati trovati
+
+    
+    console.log('Sono stati trovati questi numeri simili ', arrayUtente, 'ne hai trovato/i ' + arrayUtente.length)//' alla posizione '); //+ arrayUtente.indexOf(utente)); // 6. vedere numeri simili e quali sono stati trovati
 }
 
 // 1.funzione numeri casuali
