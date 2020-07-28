@@ -32,11 +32,9 @@ function alertUtente(){
             var utente=parseInt(prompt('Attenzione! inserire numeri nell\' intervallo corretto'));
         }
 
-        if(ricerca(arrayMacchina,utente) && !ricerca(arrayUtente,utente)){ // controllo duplicati
-
-            //if(utente === arrayMacchina[i]){ // 5. confronto fra i due array 
-                arrayUtente.push(utente);
-           // }
+        if(ricerca(arrayMacchina,utente) && !ricerca(arrayUtente,utente)){ // controllo duplicati // 5. confronto fra i due array 
+            
+            arrayUtente.push(utente);
         }
 
     }
